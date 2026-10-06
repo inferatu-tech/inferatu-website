@@ -187,3 +187,18 @@ entries that are no longer needed.
   site-verification intact. The apex resolved immediately — no 40-minute
   publish gap this time. `[[routes]]` + `workers_dev = false` +
   `preview_urls = true` committed afterwards.
+- **2026-10-06 ~16:10 PT — Post-cutover.** `verify-site.sh` all green;
+  `workers.dev` confirmed off. Rich Results Test, LinkedIn Post Inspector
+  and Search Console sitemap submission done. Two lessons:
+  - Search Console showed "Couldn't fetch" with an empty *Last read* right
+    after submitting `/sitemap.xml`, although Googlebot-UA fetches returned
+    200 `application/xml`. That status is the pre-first-crawl placeholder;
+    it cleared on its own. Use *URL Inspection → Test live URL* on the
+    sitemap to confirm immediately instead of waiting.
+  - **Always Use HTTPS had not been enabled**; plain-HTTP requests returned
+    200 and the apex served a duplicate of the site over HTTP because the
+    Redirect Rule only matches `https://`. Found by curling `http://` URLs
+    after cutover — add that to the verification. Enabled; chain is now
+    `http://inferatu.com/x` → `https://inferatu.com/x` → `https://www.inferatu.com/x`.
+  - WordPress instance at `34.94.143.68` stopped (not deleted) pending a
+    quiet period.
