@@ -177,6 +177,13 @@ entries that are no longer needed.
   (version `1c8cc070`, 17 assets, no config files leaked). Verified on
   `https://inferatu-website.red-bar-5885.workers.dev`: statuses, legacy
   redirects, security headers, `noindex` on workers.dev, fonts, map +
-  marker (referrer allowlist OK), valid TLS. Pending: Cloudflare zone for
-  `inferatu.com` active (nameserver change at GoDaddy), Redirect Rule,
-  custom domains, then the `[[routes]]` commit.
+  marker (referrer allowlist OK), valid TLS.
+- **2026-10-06 ~15:50 PT — Cutover.** Zone `inferatu.com` added to Cloudflare
+  (`earl`/`mia.ns.cloudflare.com`), nameservers changed at GoDaddy, Redirect
+  Rule created, `www` then apex attached as Worker custom domains. Verified
+  from outside within minutes: `www` served by the Worker with a valid
+  Let's Encrypt cert (the WordPress host's cert had expired 2026-08-07),
+  apex 301 → www issued at the edge (no `X-Redirect-By`), MX/SPF/DMARC/
+  site-verification intact. The apex resolved immediately — no 40-minute
+  publish gap this time. `[[routes]]` + `workers_dev = false` +
+  `preview_urls = true` committed afterwards.
