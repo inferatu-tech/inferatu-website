@@ -1,5 +1,6 @@
 .git
 .gitignore
+.cursor
 .wrangler
 .DS_Store
 node_modules
