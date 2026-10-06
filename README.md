@@ -200,5 +200,6 @@ entries that are no longer needed.
     Redirect Rule only matches `https://`. Found by curling `http://` URLs
     after cutover — add that to the verification. Enabled; chain is now
     `http://inferatu.com/x` → `https://inferatu.com/x` → `https://www.inferatu.com/x`.
-  - WordPress instance at `34.94.143.68` stopped (not deleted) pending a
-    quiet period.
+  - WordPress GCP VM at `34.94.143.68` shut down (not deleted). Backups: the
+    UpdraftPlus set on Backblaze B2 plus a GCP archival disk snapshot taken
+    before shutdown. Delete the VM after a quiet period; the snapshot stays.
