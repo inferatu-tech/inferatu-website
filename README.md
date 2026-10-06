@@ -52,9 +52,9 @@ Static version verified to match within 1–3px (page height 2665 vs 2661).
 
 | Element | Live value |
 |---|---|
-| Top bar | 31px tall, Open Sans 12px/17px 500, phone at x=30 |
-| Main header | 80px tall, fixed, `#000` |
-| Logo | 43px tall at x=34 (260px wide) |
+| Top bar | 31px tall, Open Sans 12px/17px, white, ETmodules handset/envelope glyphs 12px; phone at x=30 (weight 600), email bold; pinned on scroll; centered on mobile |
+| Main header | 80px tall, fixed, `#000`; **compacts to 54px** once `scrollY > 60` (`.et-fixed-header`), 0.4s ease-in-out |
+| Logo | 43px tall at x=34 (260px wide); **29px tall (175px wide) when compact** |
 | Nav links | Open Sans 14px 700 `rgba(255,255,255,.6)`, 26px apart, right edge x=1334 |
 | Hero | 490px tall; `front-page.png` cover; padding 192px top/bottom |
 | Hero title | Josefin Sans 96px/96px 700, `text-shadow 0 .1em .1em rgba(0,0,0,.4)` |
@@ -71,6 +71,10 @@ Static version verified to match within 1–3px (page height 2665 vs 2661).
 
 Deliberate departures from the live site:
 
+- The phone/email top bar is not pinned; it scrolls away and only the main
+  header is sticky (compacting 80→54px, logo 43→29px, past 60px of scroll,
+  as Divi does). Divi pins the top bar too, which costs 31px of viewport at
+  every scroll position.
 - Mobile shows the logo (Divi hid it) and left-aligns body text (justified
   text at 312px produced rivers).
 - The X/Twitter "Follow" icon pointed at `#` on the live site; it is omitted.

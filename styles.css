@@ -2,9 +2,11 @@
    site at 1366px / 390px (Oct 2026); see README for the measurement table. */
 
 :root {
-  --header-top: 31px;
-  --header-main: 80px;
-  --header-total: 111px;
+  --topbar-h: 31px;
+  --header-h: 80px;          /* live Divi #main-header */
+  --header-h-compact: 54px;  /* live Divi .et-fixed-header */
+  --logo-h: 43px;
+  --logo-h-compact: 29px;
   --row-max: 1080px;
   --font-body: "Open Sans", Arial, sans-serif;
   --font-display: "Josefin Sans", Helvetica, Arial, Lucida, sans-serif;
@@ -15,7 +17,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--header-total);
+  scroll-padding-top: var(--header-h-compact); /* header is compact whenever an anchor jump lands */
   -webkit-text-size-adjust: 100%;
 }
 
@@ -29,7 +31,6 @@ body {
   line-height: 1.7em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding-top: var(--header-total);
 }
 
 a { color: #fff; font-weight: 700; text-decoration: none; }
@@ -63,49 +64,55 @@ address { font-style: normal; }
 }
 .skip-link:focus { top: 8px; }
 
-/* ---------- Header ---------- */
+/* ---------- Top bar (Divi secondary header: 12px bold white, icon + text) ----------
+   Not pinned: it scrolls away so the compact header costs less viewport. */
+
+.topbar { background: #000; min-height: var(--topbar-h); }
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-height: var(--topbar-h);
+  padding: 0 30px;
+  line-height: 17px;
+}
+.topbar a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+}
+.topbar a:hover { color: #666; }
+.topbar-icon { width: 12px; height: 12px; flex: none; }
+
+/* ---------- Header (sticky, compacts on scroll like Divi's fixed nav) ---------- */
 
 .site-header {
-  position: fixed;
-  top: 0; left: 0; right: 0;
+  position: sticky;
+  top: 0;
   z-index: 100;
   background: #000;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
 }
 
-.top-bar {
-  height: var(--header-top);
-  font-size: 12px;
-  line-height: 17px;
-}
-.top-bar-inner {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  height: 100%;
-  padding: 0 30px;
-}
-.top-bar-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  color: #fff;
-  font-weight: 700;
-}
-.top-bar-item .icon { width: 13px; height: 13px; }
-.top-bar-item a { font-weight: 700; }
-.top-bar-item:hover, .top-bar-item:hover a { color: #666; }
-
-.main-bar { height: var(--header-main); }
 .main-bar-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100%;
+  min-height: var(--header-h);
   padding: 0 30px 0 34px;
+  transition: min-height 0.4s ease-in-out;
 }
+.site-header.is-compact .main-bar-inner { min-height: var(--header-h-compact); }
 
-.logo img { height: 43px; width: auto; }
+.logo img {
+  height: var(--logo-h);
+  width: auto;
+  transition: height 0.4s ease-in-out;
+}
+.site-header.is-compact .logo img { height: var(--logo-h-compact); }
 
 .site-nav ul { display: flex; gap: 26px; }
 .site-nav a {
@@ -254,9 +261,12 @@ address { font-style: normal; }
   .band { padding: 50px 0; }
   .row { padding: 30px 0; }
 
-  .top-bar-inner, .main-bar-inner { padding: 0 10%; }
+  .topbar-inner, .main-bar-inner { padding: 0 10%; }
+  .topbar-inner { justify-content: center; flex-wrap: wrap; }
 
-  .logo img { height: auto; width: min(266px, 80vw - 60px); }
+  /* phones size the logo by width so it stays clear of the menu button */
+  .logo img { height: auto; width: min(266px, 80vw - 60px); transition: width 0.4s ease-in-out; }
+  .site-header.is-compact .logo img { height: auto; width: min(180px, 80vw - 60px); }
 
   .menu-toggle { display: flex; }
 
@@ -290,4 +300,5 @@ address { font-style: normal; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .main-bar-inner, .logo img { transition: none; }
 }
