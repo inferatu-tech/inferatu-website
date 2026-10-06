@@ -1,0 +1,13 @@
+/*
+  Strict-Transport-Security: max-age=15552000
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), camera=(), microphone=()
+
+/assets/*
+  Cache-Control: public, max-age=604800
+
+# production <name>.<account>.workers.dev and <version>-<name>.<account>.workers.dev
+https://:name.:account.workers.dev/*
+  X-Robots-Tag: noindex

@@ -1,0 +1,21 @@
+name = "inferatu-website"
+compatibility_date = "2026-10-06"
+
+[assets]
+directory = "."
+not_found_handling = "404-page"       # serve 404.html with a 404 status
+html_handling = "auto-trailing-slash"
+
+# After the custom domains are attached in the dashboard (see README cutover
+# section), add — in one commit:
+#
+# workers_dev = false
+# preview_urls = true
+#
+# [[routes]]
+# pattern = "www.inferatu.com"
+# custom_domain = true
+#
+# [[routes]]
+# pattern = "inferatu.com"
+# custom_domain = true

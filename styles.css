@@ -1,0 +1,293 @@
+/* Inferatu — static rebuild of the Divi site. Values measured on the live
+   site at 1366px / 390px (Oct 2026); see README for the measurement table. */
+
+:root {
+  --header-top: 31px;
+  --header-main: 80px;
+  --header-total: 111px;
+  --row-max: 1080px;
+  --font-body: "Open Sans", Arial, sans-serif;
+  --font-display: "Josefin Sans", Helvetica, Arial, Lucida, sans-serif;
+  --muted: rgba(255, 255, 255, 0.6);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-total);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: #000;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.7em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-top: var(--header-total);
+}
+
+a { color: #fff; font-weight: 700; text-decoration: none; }
+a:hover { color: #666; }
+a:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+img, svg { display: block; max-width: 100%; }
+.icon { width: 1em; height: 1em; fill: currentColor; }
+
+ul { margin: 0; padding: 0; list-style: none; }
+h1, h2, h3, p { margin: 0; }
+address { font-style: normal; }
+
+.row {
+  width: 80%;
+  max-width: var(--row-max);
+  margin: 0 auto;
+  padding: 27px 0;
+}
+
+.band { padding: 54px 0; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+.skip-link {
+  position: absolute; left: 8px; top: -100px; z-index: 1000;
+  padding: 8px 12px; background: #fff; color: #000;
+}
+.skip-link:focus { top: 8px; }
+
+/* ---------- Header ---------- */
+
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: #000;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.top-bar {
+  height: var(--header-top);
+  font-size: 12px;
+  line-height: 17px;
+}
+.top-bar-inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 100%;
+  padding: 0 30px;
+}
+.top-bar-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #fff;
+  font-weight: 700;
+}
+.top-bar-item .icon { width: 13px; height: 13px; }
+.top-bar-item a { font-weight: 700; }
+.top-bar-item:hover, .top-bar-item:hover a { color: #666; }
+
+.main-bar { height: var(--header-main); }
+.main-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 30px 0 34px;
+}
+
+.logo img { height: 43px; width: auto; }
+
+.site-nav ul { display: flex; gap: 26px; }
+.site-nav a {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted);
+  padding: 8px 0;
+}
+.site-nav a:hover { color: #fff; }
+
+.menu-toggle {
+  display: none;
+  width: 32px; height: 32px;
+  padding: 4px;
+  border: 0; background: none; cursor: pointer;
+  flex-direction: column; justify-content: space-between;
+}
+.menu-toggle span { display: block; height: 3px; background: #fff; border-radius: 1px; }
+
+/* ---------- Hero ---------- */
+
+.hero {
+  background: #000 url("assets/hero.webp") center / cover no-repeat;
+  padding: 192px 0;
+  text-align: center;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 96px;
+  line-height: 96px;
+  padding-bottom: 10px;
+  text-shadow: 0 0.1em 0.1em rgba(0, 0, 0, 0.4);
+}
+.hero-title a { color: #fff; font-weight: 700; }
+.hero-title a:hover { color: #fff; }
+
+/* ---------- Prose (What We Do) ---------- */
+
+.prose, .person {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 23.8px;
+  text-align: justify;
+}
+.prose h1 {
+  font-size: 30px;
+  line-height: 30px;
+  font-weight: 700;
+  padding-bottom: 10px;
+}
+.prose p, .person-body p { padding-bottom: 16px; }
+.prose p:last-child, .person-body p:last-of-type { padding-bottom: 0; }
+
+/* ---------- Team ---------- */
+
+.person {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  column-gap: 30px;
+  margin-bottom: 30px;
+}
+.person:last-child { margin-bottom: 0; }
+
+.person-photo { display: block; width: 150px; }
+.person-photo img {
+  width: 150px; height: 150px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.person h3 {
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 700;
+  padding-bottom: 10px;
+}
+.person-body p.person-role { color: #aaa; padding-bottom: 0; }
+
+.person-links { margin-top: 20px; display: flex; gap: 12px; }
+.person-links a { display: inline-block; color: #fff; }
+.person-links .icon { width: 16px; height: 16px; }
+.person-links a:hover { color: #666; }
+
+/* ---------- Map ---------- */
+
+.map-band { background: #000; }
+.map-canvas {
+  height: 440px;
+  background: #000;
+  display: flex; align-items: center; justify-content: center;
+}
+.map-canvas.map-failed::after {
+  content: "Inferatu Headquarters — Escondido, CA";
+  color: var(--muted);
+  font-family: var(--font-display);
+}
+
+/* ---------- Contact ---------- */
+
+.contact-card {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 23.8px;
+  text-align: center;
+}
+.contact-card a { color: #fff; font-weight: 700; }
+.contact-card a:hover { color: #666; }
+
+.social-follow { display: flex; gap: 8px; margin-top: 30px; }
+.social-follow li { margin-bottom: 8px; }
+.social-follow a {
+  display: flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px;
+  border-radius: 3px;
+  color: #fff;
+}
+.social-follow .icon { width: 16px; height: 16px; }
+.social-linkedin { background: #007bb6; }
+.social-follow a:hover { color: #fff; opacity: 0.85; }
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  background: rgba(0, 0, 0, 0.32);
+  color: #666;
+  font-size: 14px;
+}
+.site-footer .row { padding: 15px 0 5px; }
+.site-footer p { padding-bottom: 10px; }
+.site-footer a { color: #666; font-weight: 700; }
+.site-footer a:hover { color: #fff; }
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1349px) and (min-width: 981px) {
+  .band { padding: 4% 0; }
+  .row { padding: 2% 0; }
+}
+
+@media (max-width: 980px) {
+  .band { padding: 50px 0; }
+  .row { padding: 30px 0; }
+
+  .top-bar-inner, .main-bar-inner { padding: 0 10%; }
+
+  .logo img { height: auto; width: min(266px, 80vw - 60px); }
+
+  .menu-toggle { display: flex; }
+
+  .site-nav {
+    position: absolute;
+    left: 0; right: 0; top: 100%;
+    background: #000;
+    border-top: 3px solid #fff;
+    padding: 5px 0;
+    display: none;
+  }
+  body.nav-open .site-nav { display: block; }
+  .site-nav ul { display: block; padding: 0 10%; }
+  .site-nav a { padding: 10px 5%; }
+
+  .hero { padding: 192px 0 55px; }
+  .hero-title { font-size: 96px; line-height: 96px; }
+
+  .map-canvas { height: 200px; }
+  .site-footer .row { text-align: center; }
+}
+
+@media (max-width: 767px) {
+  .hero-title { font-size: 48px; line-height: 48px; }
+
+  .prose, .person, .person-body { text-align: left; hyphens: manual; }
+
+  .person { display: block; }
+  .person-photo { margin-bottom: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
