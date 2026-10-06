@@ -171,5 +171,12 @@ entries that are no longer needed.
 ## Cutover log
 
 - **2026-10-06** — Static site built and verified locally against the live
-  Divi site. Phases 3–5 pending: GitHub mirror, Cloudflare zone for
-  `inferatu.com`, nameserver change at GoDaddy.
+  Divi site. Pushed to Origin and to the GitHub mirror
+  `inferatu-tech/inferatu-website`.
+- **2026-10-06** — Workers Builds connected; first deploy succeeded
+  (version `1c8cc070`, 17 assets, no config files leaked). Verified on
+  `https://inferatu-website.red-bar-5885.workers.dev`: statuses, legacy
+  redirects, security headers, `noindex` on workers.dev, fonts, map +
+  marker (referrer allowlist OK), valid TLS. Pending: Cloudflare zone for
+  `inferatu.com` active (nameserver change at GoDaddy), Redirect Rule,
+  custom domains, then the `[[routes]]` commit.
