@@ -204,6 +204,11 @@ entries that are no longer needed.
     Redirect Rule only matches `https://`. Found by curling `http://` URLs
     after cutover — add that to the verification. Enabled; chain is now
     `http://inferatu.com/x` → `https://inferatu.com/x` → `https://www.inferatu.com/x`.
-  - WordPress GCP VM at `34.94.143.68` shut down (not deleted). Backups: the
-    UpdraftPlus set on Backblaze B2 plus a GCP archival disk snapshot taken
-    before shutdown. Delete the VM after a quiet period; the snapshot stays.
+  - WordPress GCP VM at `34.94.143.68` shut down. Backups: the UpdraftPlus
+    set on Backblaze B2 plus a GCP archival disk snapshot taken before
+    shutdown.
+- **2026-10-08** — Body copy raised to 18px/28px. WordPress VM **deleted**
+  and its static IP released; the B2 backup and GCP snapshot remain the only
+  copies of the old site. Maps key referrer list still includes the
+  `localhost`/`127.0.0.1` dev origins by choice; prune when local work ends.
+  Migration closed.
