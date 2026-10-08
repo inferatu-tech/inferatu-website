@@ -7,6 +7,9 @@
   --header-h-compact: 54px;  /* live Divi .et-fixed-header */
   --logo-h: 43px;
   --logo-h-compact: 29px;
+  /* Body copy (Josefin Sans has a small x-height; live Divi was 16px/23.8px) */
+  --body-size: 18px;
+  --body-lh: 28px;
   --row-max: 1080px;
   --font-body: "Open Sans", Arial, sans-serif;
   --font-display: "Josefin Sans", Helvetica, Arial, Lucida, sans-serif;
@@ -155,9 +158,9 @@ address { font-style: normal; }
 
 .prose, .person {
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: var(--body-size);
   font-weight: 500;
-  line-height: 23.8px;
+  line-height: var(--body-lh);
   text-align: justify;
 }
 .prose h1 {

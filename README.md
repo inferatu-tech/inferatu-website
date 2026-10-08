@@ -71,6 +71,10 @@ Static version verified to match within 1–3px (page height 2665 vs 2661).
 
 Deliberate departures from the live site:
 
+- Body copy is 18px/28px (`--body-size`/`--body-lh`), up from Divi's
+  16px/23.8px; Josefin Sans's small x-height made 16px read small.
+  Approved 2026-10-08.
+
 - The phone/email top bar is not pinned; it scrolls away and only the main
   header is sticky (compacting 80→54px, logo 43→29px, past 60px of scroll,
   as Divi does). Divi pins the top bar too, which costs 31px of viewport at
